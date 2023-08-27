@@ -1,0 +1,13 @@
+# Python virtual environment
+venv/
+
+# Environment variables
+.env
+serviceAccountKey.json
+
+# Compiled Python files
+__pycache__/
+*.py[cod]
+
+# Dependency directories
+node_modules/
