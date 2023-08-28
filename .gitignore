@@ -4,6 +4,7 @@ venv/
 # Environment variables
 .env
 serviceAccountKey.json
+config.py
 
 # Compiled Python files
 __pycache__/
