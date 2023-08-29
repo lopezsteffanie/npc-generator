@@ -3,7 +3,6 @@ from .npc_service import add_npc, get_all_npcs, delete_npc_by_id, update_npc, ge
 
 npc_bp = Blueprint("npcs", __name__, url_prefix="/api")
 
-
 @npc_bp.route("/add-npc", methods=["POST"])
 def add_npc_route():
     try:
