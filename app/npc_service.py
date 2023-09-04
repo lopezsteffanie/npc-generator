@@ -21,6 +21,11 @@ def get_all_npcs():
     npc_collection = db.collection("npcs").get()
     return [doc.to_dict() for doc in npc_collection]
 
+def get_npc_by_id(npc_id):
+    npc_ref = db.collection("npcs").document(npc_id)
+    npc = npc_ref.get()
+    return npc.to_dict() if npc.exists else None
+
 def delete_npc_by_id(npc_id):
     npc_ref = db.collection("npcs").document(npc_id)
     npc = npc_ref.get()

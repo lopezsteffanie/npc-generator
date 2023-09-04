@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from .npc_service import add_npc, get_all_npcs, delete_npc_by_id, update_npc, get_random_npc
+from .npc_service import add_npc, get_all_npcs, delete_npc_by_id, update_npc, get_random_npc, get_npc_by_id
 
 npc_bp = Blueprint("npcs", __name__, url_prefix="/api")
 
@@ -7,6 +7,17 @@ npc_bp = Blueprint("npcs", __name__, url_prefix="/api")
 def home():
     return jsonify({"message": "Welcome to the NPC API!"}), 200
 
+@npc_bp.route("/get-npc-by-id/<npc_id>", methods=["GET"])
+def get_npc_by_id_route(npc_id):
+    try:
+        npc = get_npc_by_id(npc_id)
+        if npc:
+            return jsonify(npc), 200
+        else:
+            return jsonify({"message": "NPC not found"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
 @npc_bp.route("/add-npc", methods=["POST"])
 def add_npc_route():
     try:
