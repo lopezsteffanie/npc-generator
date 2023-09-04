@@ -10,8 +10,7 @@ def home():
 @npc_bp.route("/get-npc-by-id/<npc_id>", methods=["GET"])
 def get_npc_by_id_route(npc_id):
     try:
-        npc = get_npc_by_id(npc_id)
-        if npc:
+        if npc := get_npc_by_id(npc_id):
             return jsonify(npc), 200
         else:
             return jsonify({"message": "NPC not found"}), 404
