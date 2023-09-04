@@ -17,8 +17,10 @@ def create_app(test_config=None):
     cred = credentials.Certificate(json.loads(service_account_key_json))
     firebase_admin.initialize_app(cred)
     
-    # Configure CORS to allow requests from React app
-    CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+    # # Allow requests from the React development server
+    # CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+    # Enable CORS for all routes
+    CORS(app)
     
     # Register Blueprints here
     from .routes import npc_bp
